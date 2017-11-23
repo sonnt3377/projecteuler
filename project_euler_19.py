@@ -56,7 +56,7 @@ def get_day_of_week(year, month, day):
 
     return int(w)
 
-def months_start_range(target_day, year_start, year_end):
+def get_total_first_of_month(target_day, year_start, year_end):
     """
     Compute the number of times a target day is the first of a month.
 
@@ -77,7 +77,7 @@ def months_start_range(target_day, year_start, year_end):
 
 start = time.time()
 # Counting the number of Sundays, i.e. 0, in first day of the month
-result = months_start_range(0, 1901, 2000)
+result = get_total_first_of_month(0, 1901, 2000)
 elapsed = time.time() - start
 
 print("Number of Sundays as the first day of a month is {0} found in {1:.8f} seconds".format(result, elapsed))
