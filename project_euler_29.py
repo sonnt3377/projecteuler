@@ -47,7 +47,7 @@ def remove_duplicate(input_list):
     """
     Create a new list and remove duplicate number
 
-    :param input_list:
+    :param input_list: original list, possibly with duplicate numbers
     :return: a list where duplicate numbers are removed
     """
     output_list = []
