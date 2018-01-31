@@ -90,11 +90,64 @@ def find_max_pandigital():
 
     return max_value
 
+
+def find_max_pandigital_2():
+    """
+    Find the max 9-digit pandigital with some additional constraints
+
+    :return: the max value
+    """
+    """
+    Analysis:
+
+    The max 9-digit pandigital should start with digit 9, so the fixed number should start with 9 since it multiplies
+    with 1 and then concated to be the first path of the 9-digit pandigital.
+
+    A 9-digit pandigital can be formed by:
+        Number A x (1, 2)
+        Number B x (1, 2, 3)
+        Number C x (1, 2, 3, 4)
+        Number D x (1, 2, 3, 4, 5)
+    Since the pandigital is 9-digit
+        A should be a 4-digit number
+        B should be a 3-digit number
+        C should be a 2-digit number
+        D should be a 1-digit number
+
+    If the number is 2-digit (we only consider it in the form 9x, as we search for the max pandigital)
+        When multiplying with (1, 2, 3), the longest number it creates has 8 digits
+        When multiplying with (1, 2, 3, 4), the shortest number it creates has 11 digits
+    If the number is 3-digit (we only consider it in the form 9x, as we search for the max pandigital)
+        When multiplying with (1, 2), the longest number it creates has 7 digits
+        When multiplying with (1, 2, 3), the shortest number it creates has 11 digits
+
+    So the number can have only one digit i.e. 9 or 4 digits i.e 9xyz
+
+    Regarding 4-digit numbers, the range should be from 9123 (smallest 4-digit with possibility to create a 9-digit
+    pandigital) to 9876 (largest 4-digit with possibility to create a 9-digit pandigital).
+    """
+    # Max 9-digit pandigital, found when multiplying 9 with (1, 2, 3, 4, 5)
+    max_value = 918273645
+
+    # We search from large numbers down until finding a pandigital, and stop, since we already find the largest
+    for i in range(9876, 9123, -1):
+        if is_pandigital(i, i * 2):
+            max_value = int(str(i) + str(i * 2))
+            break
+
+    return max_value
+
 def main():
 
+    # Searching with 'brute force'
     start_time = time.time()
     result = find_max_pandigital()
-    print("Brute force: Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+    print("Method 1: Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
+    # Searching using a more optimal approach
+    start_time = time.time()
+    result = find_max_pandigital_2()
+    print("Method 2: Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
 
 if __name__ == "__main__":
     main()
