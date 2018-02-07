@@ -22,8 +22,8 @@ def find_the_right_permutation(number):
     :return: a string at the 1000000th position
     """
     result_string = ""
-    number_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    list_length = len(number_list)
+    digit_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    list_length = len(digit_list)
 
     # With the loop, we find the first digit of that string, then the second digit, and so on.
     for i in range(list_length):
@@ -35,9 +35,9 @@ def find_the_right_permutation(number):
         remainder = number % no_of_permutations
         number = remainder
 
-        result_string += str(number_list[quotient])
+        result_string += str(digit_list[quotient])
         # This digit is already used and cannot be used again.
-        del number_list[quotient]
+        del digit_list[quotient]
 
     return result_string
 
