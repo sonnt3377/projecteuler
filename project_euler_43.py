@@ -15,17 +15,17 @@
 
     Find the sum of all 0 to 9 pandigital numbers with this property.
 """
-import time
 import itertools
+import time
 
 prime_list = [2, 3, 5, 7, 11, 13, 17]
 
-def is_sub_string_divisable(string):
+def are_sub_strings_divisible(string):
     """
-    Check if the sub strings created out of an input string is divisible with the condition above
+    Check if sub strings created out of an input string are divisible with the condition above
 
     :param string: the input string to test
-    :return: True if all sub strings are divisible with such conditions, False otherwise
+    :return: True if all sub strings are divisible with such condition, False otherwise.
     """
     for i in range(len(prime_list)):
         if int(string[i + 1: i + 4]) % prime_list[i] != 0:
@@ -35,9 +35,9 @@ def is_sub_string_divisable(string):
 
 def find_the_sum(string):
     """
-    Return sum all all 0-9 pandigital numbers with divisable sub-strings
+    Return sum of all 0 to 9 pandigital numbers with divisible sub-strings
 
-    :param string: contains all digits from 0 to 9, each appears once used as input to find 0-9 pandigital numbers
+    :param string: contains all digits from 0 to 9, each appears once, used as inputs to find 0 to 9 pandigital numbers
     :return: the sum
     """
     sum = 0
@@ -50,8 +50,8 @@ def find_the_sum(string):
 
         temp = ''.join(list(perm))
 
-        # Check for the divisability property
-        if is_sub_string_divisable(temp):
+        # Check for the divisibility property
+        if are_sub_strings_divisible(temp):
             sum += int(temp)
 
     return sum
