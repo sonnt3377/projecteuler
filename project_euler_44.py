@@ -12,6 +12,7 @@
 import time
 import math
 
+
 def is_pentagonal_number(n):
     """
     Check if an integer is a pentagon
@@ -22,6 +23,7 @@ def is_pentagonal_number(n):
     """
     test = (math.sqrt(24 * n + 1) + 1) / 6
     return test == int(test)
+
 
 def do_work():
     """
@@ -34,9 +36,9 @@ def do_work():
 
     while not is_result_found:
         large_pentagon = n * (3 * n - 1) / 2
-        
+
         # Check all smaller pentagons
-        for m in range(n -1, 0, -1):
+        for m in range(n - 1, 0, -1):
             small_pentagon = m * (3 * m - 1) / 2
             # If the number is found
             if is_pentagonal_number(large_pentagon + small_pentagon) and \
@@ -48,12 +50,13 @@ def do_work():
 
     return n - 1, m, d
 
-def main():
 
+def main():
     start_time = time.time()
     result = do_work()
     print("The value of D is {0}, found in {1} seconds\nTwo numbers are: {2} and {3}".
           format(result[2], time.time() - start_time, result[0], result[1]))
+
 
 if __name__ == "__main__":
     main()

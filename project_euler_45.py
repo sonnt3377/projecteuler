@@ -13,6 +13,7 @@
 import time
 import math
 
+
 # Identical method to that in Project Euler 44
 def is_pentagonal_number(n):
     """
@@ -24,6 +25,7 @@ def is_pentagonal_number(n):
     """
     test = (math.sqrt(24 * n + 1) + 1) / 6
     return test == int(test)
+
 
 def do_work():
     """
@@ -51,13 +53,14 @@ def do_work():
 
     return m, hexagonal_number
 
-def main():
 
+def main():
     start_time = time.time()
     result = do_work()
     print("The next triangular number that is also pentagonal and hexagonal is {0}, "
           "found in {1} seconds.\nThe hexagonal index is {2}. The triangular index is {3}."
           .format(result[1], time.time() - start_time, result[0], 2 * result[0] - 1))
+
 
 if __name__ == "__main__":
     main()
