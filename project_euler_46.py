@@ -17,6 +17,7 @@
 import math
 import time
 
+
 def find_prime_numbers_with_sieving(limit):
     """
     Find all prime numbers less than a limit using sieving.
@@ -25,7 +26,8 @@ def find_prime_numbers_with_sieving(limit):
     :param limit: the upper bound number
     :return: list containing all primes less than the limit
     """
-    # A boolean list, with index indicating number, value in that index is True if that number is prime, and False otherwise
+    # A boolean list, with index indicating number, value in that index is True if that number is prime,
+    # and False otherwise
     primes = [True] * limit
     # 0 and 1 are not prime
     primes[0], primes[1] = [False] * 2
@@ -35,9 +37,10 @@ def find_prime_numbers_with_sieving(limit):
         if value is True:
             primes[index * 2::index] = [False] * (((limit - 1) // index) - 1)
 
-    prime_list = [i for i in range(limit) if primes[i] == True]
+    prime_list = [i for i in range(limit) if primes[i]]
 
     return prime_list
+
 
 def is_twice_a_square(number):
     """
@@ -50,6 +53,7 @@ def is_twice_a_square(number):
     square_number = math.sqrt(number / 2)
     # print("{0} {1}".format(square_number, int(square_number)))
     return square_number == int(square_number)
+
 
 def do_work():
     """
@@ -71,7 +75,6 @@ def do_work():
 
         # Check for the next odd number, we skip numbers less than 5
         odd_number += 2
-        is_square = False
 
         for prime_number in prime_list:
             # Only check prime numbers that are not greater than the odd number
@@ -90,11 +93,12 @@ def do_work():
 
     return odd_number
 
-def main():
 
+def main():
     start_time = time.time()
     result = do_work()
     print("The result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()
