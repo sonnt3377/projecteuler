@@ -17,23 +17,27 @@ import time
 letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
+
 def generate_triangle_number_list(number):
     """
     Generate a list containing triangle numbers
     :param number: the number of items in the list
     :return: the list
     """
-    list = []
+    list1 = []
     for i in range(number):
-        list.append((i + 1) * (i + 2) / 2)
+        list1.append((i + 1) * (i + 2) / 2)
 
-    return list
+    return list1
+
 
 def is_triangle_word(word, triangle_number_list):
     """
     Check if a word is a triangle word
 
     :param word: input word to check
+    :param triangle_number_list:
+
     :return: True of the word is a triangle word, False otherwise
     """
     value = 0
@@ -44,22 +48,23 @@ def is_triangle_word(word, triangle_number_list):
 
     return value in triangle_number_list
 
+
 def get_words_from_file(file_name):
-    '''
+    """
     Read input data from file, and return a list containing all words
 
     :param file_name: input data file
     :return: list of words
-    '''
+    """
     f = open(file_name)
     word_list = f.read().replace('\"', '').split(",")
 
     return word_list
 
-def main():
 
+def main():
     start_time = time.time()
-    
+
     result = 0
     word_list = get_words_from_file("project_euler_42.txt")
 
@@ -71,6 +76,7 @@ def main():
             result += 1
 
     print("The result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

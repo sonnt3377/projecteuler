@@ -1,7 +1,8 @@
 """
     Project Euler 26: Reciprocal cycles
 
-    A unit fraction contains 1 in the numerator. The decimal representation of the unit fractions with denominators 2 to 10 are given:
+    A unit fraction contains 1 in the numerator. The decimal representation of the unit fractions with denominators 2
+    to 10 are given:
     1/2	= 	0.5
     1/3	= 	0.(3)
     1/4	= 	0.25
@@ -11,11 +12,13 @@
     1/8	= 	0.125
     1/9	= 	0.(1)
     1/10	= 	0.1
-    Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that 1/7 has a 6-digit recurring cycle.
+    Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that 1/7 has a 6-digit recurring
+    cycle.
 
     Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
 """
 import time
+
 
 def find_recurring_cycle(n):
     """
@@ -43,7 +46,7 @@ def find_recurring_cycle(n):
     # If nominator == 0
     # It means the division result is not indefinite and we just stop.
     try:
-        while (remainders[nominator] == 0 and nominator != 0):
+        while remainders[nominator] == 0 and nominator != 0:
             remainders[nominator] = division_counts
             # Prepare nominator for the next division step
             nominator *= 10
@@ -55,6 +58,7 @@ def find_recurring_cycle(n):
         print("Total number of list items is {0}, index is {1}".format(n, nominator))
 
     return division_counts - 1
+
 
 def find_max_recurring_cycle(n):
     """
@@ -74,11 +78,12 @@ def find_max_recurring_cycle(n):
         recurring_cycle = find_recurring_cycle(i)
 
         # If we find a number with longer recurring cycle, update it
-        if (max_recurring_cycle < recurring_cycle):
+        if max_recurring_cycle < recurring_cycle:
             max_recurring_cycle = recurring_cycle
             resulting_number = i
 
     return max_recurring_cycle, resulting_number
+
 
 def main():
     n = int(input('Enter the integer number: '))
@@ -87,8 +92,10 @@ def main():
     max_recurring_cycle = output[0]
     result_number = output[1]
 
-    print("The longest recurring cycle for 1/d where d < {0} is {1}. The number is {2}".format(n, max_recurring_cycle, result_number))
+    print("The longest recurring cycle for 1/d where d < {0} is {1}. The number is {2}".format(n, max_recurring_cycle,
+                                                                                               result_number))
     print("Result found in {0} seconds".format(time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

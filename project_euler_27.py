@@ -21,6 +21,7 @@
 
 import time
 
+
 def sieve(number):
     """
     Finding a list of primes less than to a number using sieving
@@ -28,7 +29,8 @@ def sieve(number):
     :param number: the upper bound number, that all primes need to be less than or equal
     :return: a list where its items are marked as prime/not prime
     """
-    # A boolean list, each index indicates a corresponding number, the value in that index is True if that number is prime,
+    # A boolean list, each index indicates a corresponding number, the value in that index is True if that number is
+    # prime,
     # and False otherwise
     primes = [True] * number
 
@@ -41,6 +43,7 @@ def sieve(number):
             primes[index * 2::index] = [False] * (((number - 1) // index) - 1)
 
     return primes
+
 
 def do_work(number, a_limit, b_limit):
     """
@@ -55,7 +58,7 @@ def do_work(number, a_limit, b_limit):
     """
     start_time = time.time()
 
-    P = sieve(number)
+    p = sieve(number)
     a_max, b_max, max_sequence = 0, 0, 0
 
     try:
@@ -64,7 +67,7 @@ def do_work(number, a_limit, b_limit):
             # 80 primes as in the example, meaning that b > 80
             for b in range(80, b_limit + 1):
                 # 'b' must be a prime, otherwise the requirement does not satisfy when n = 0
-                if P[b] is False:
+                if p[b] is False:
                     continue
                 # b must be greater than (- n^2 - a*n) since primes must be positive
                 # This should apply to n = 40 too so it becomes b > (-40^2 - 40*a)
@@ -74,7 +77,7 @@ def do_work(number, a_limit, b_limit):
                 sequence_length, n = 0, 0
 
                 # Calculate the number of consecutive primes
-                while P[n ** 2 + a * n + b] is True:
+                while p[n ** 2 + a * n + b] is True:
                     sequence_length += 1
                     n += 1
 
@@ -85,9 +88,10 @@ def do_work(number, a_limit, b_limit):
         product = a_max * b_max
 
         print("Brute force: a = {0}, b = {1}, longest sequence = {2}, product = {3} \nfound in {4} seconds".format(
-                            a_max, b_max, max_sequence, product, time.time() - start_time))
+            a_max, b_max, max_sequence, product, time.time() - start_time))
     except IndexError:
         print("Prepared prime list does not contains enough items, use a larger input number")
+
 
 def main():
     # The first parameter, number is hand-picked so the list of prime numbers covers all possible primes produced
@@ -97,6 +101,7 @@ def main():
     # The larger 'number' may reduce the performance, but a more restrictive number may not create enough primes for
     # a certain a and b
     do_work(86400, 1000, 1000)
+
 
 if __name__ == "__main__":
     main()

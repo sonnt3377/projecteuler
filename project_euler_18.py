@@ -36,6 +36,7 @@
 """
 import time
 
+
 def recursive_sum(input_data, row_number):
     """
     A recursive function to create sums from certain row upward.

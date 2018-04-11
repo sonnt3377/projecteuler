@@ -17,6 +17,7 @@
 import math
 import time
 
+
 def calculate_fifth_power_sum(number):
     """
     Calculate the fifth power sum of a number
@@ -25,12 +26,13 @@ def calculate_fifth_power_sum(number):
     :return:
     """
     number_list = [int(i) for i in str(number)]
-    sum = 0
+    fifth_power_sum = 0
 
     for i in number_list:
-        sum += math.pow(i, 5)
+        fifth_power_sum += math.pow(i, 5)
 
-    return sum
+    return fifth_power_sum
+
 
 def total_sum(threshold):
     """
@@ -47,6 +49,7 @@ def total_sum(threshold):
 
     return total_sum
 
+
 def main():
     """
     Observation:
@@ -61,6 +64,7 @@ def main():
     result = total_sum(999999)
 
     print("Find result = {0} in {1} seconds".format(result, time.time() - start))
+
 
 if __name__ == "__main__":
     main()

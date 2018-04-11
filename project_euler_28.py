@@ -16,6 +16,7 @@
 import math
 import time
 
+
 def sum_of_corners(n):
     """
     Calculate the sum of the four corners of a square size 2n + 1
@@ -37,6 +38,7 @@ def sum_of_corners(n):
     # Calculate sum of all corners
     return upper_right + upper_left + lower_left + lower_right
 
+
 def diagonal_sum(size_of_square):
     """
     Sum of the diagonals of 1001 by 1001 square
@@ -45,22 +47,24 @@ def diagonal_sum(size_of_square):
     :return: the sum
     """
     # This is sum of the square which has one 1 element
-    sum = 1
+    the_sum = 1
     counter = 1
 
     # Sum of corners of all squares from the innermost to the outermost.
     # This will form the sum of the diagonals
-    while (2 * counter + 1 <= size_of_square):
-        sum += sum_of_corners(counter)
+    while 2 * counter + 1 <= size_of_square:
+        the_sum += sum_of_corners(counter)
         counter += 1
 
-    return sum
+    return the_sum
+
 
 def main():
     start_time = time.time()
     result = diagonal_sum(1001)
     elapsed = time.time() - start_time
     print("The result is {0}, found in {1} seconds".format(result, elapsed))
+
 
 if __name__ == '__main__':
     main()

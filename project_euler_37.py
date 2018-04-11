@@ -12,6 +12,7 @@
 import math
 import time
 
+
 def is_prime(number):
     """
     Check if a number is a prime
@@ -29,6 +30,7 @@ def is_prime(number):
 
     return True
 
+
 # This approach is similar to that in Project Euler 27 and 35
 def find_prime_numbers_with_sieving(limit):
     """
@@ -37,7 +39,8 @@ def find_prime_numbers_with_sieving(limit):
     :param limit: the upper bound number
     :return: list containing all primes less than the limit
     """
-    # A boolean list, with index indicating number, value in that index is True if that number is prime, and False otherwise
+    # A boolean list, with index indicating number, value in that index is True if that number is prime, and
+    # False otherwise
     primes = [True] * limit
     # 0 and 1 are not prime
     primes[0], primes[1] = [False] * 2
@@ -47,10 +50,11 @@ def find_prime_numbers_with_sieving(limit):
         if value is True:
             primes[index * 2::index] = [False] * (((limit - 1) // index) - 1)
 
-    prime_list = [i for i in range(limit) if primes[i] == True]
+    prime_list = [i for i in range(limit) if primes[i]]
 
     # Return prime list, except 2, 3, 5, 7
     return prime_list[4:]
+
 
 def is_truncatable_prime(number):
     """
@@ -71,6 +75,7 @@ def is_truncatable_prime(number):
     # The number is truncatable
     return True
 
+
 def sum_truncatable_primes():
     """
     Find the sum of all 11 truncatable primes
@@ -82,26 +87,28 @@ def sum_truncatable_primes():
     # the search space.
     # There is no guarantee that a certain search space contains all the numbers, but with a define search space, we
     # can use sieving to find all primes in such space, with faster speed.
-    SEARCH_LIMIT = 1000000
-    prime_list = find_prime_numbers_with_sieving(SEARCH_LIMIT)
-    sum = 0
+    search_limit = 1000000
+    prime_list = find_prime_numbers_with_sieving(search_limit)
+    the_sum = 0
     counter = 0
 
     for prime_number in prime_list:
         if is_truncatable_prime(prime_number):
             print("The truncatable prime is {0}".format(prime_number))
-            sum += prime_number
+            the_sum += prime_number
             counter += 1
         # Found all 11 required prime, no need to check for more.
         if counter == 11:
             break
 
-    return sum
+    return the_sum
+
 
 def main():
     start_time = time.time()
     result = sum_truncatable_primes()
     print("Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

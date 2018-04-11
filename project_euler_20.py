@@ -11,6 +11,7 @@
 
 import time
 
+
 def factorial_1(n):
     """
     Finding n! using recursive
@@ -18,10 +19,11 @@ def factorial_1(n):
     :param n: input number
     :return: n!
     """
-    if (n == 0):
+    if n == 0:
         return 1
     else:
         return n * factorial_1(n - 1)
+
 
 def factorial_2(n):
     """
@@ -35,6 +37,7 @@ def factorial_2(n):
         result *= i
 
     return result
+
 
 def factorial_3(n):
     """
@@ -50,6 +53,7 @@ def factorial_3(n):
         result = multiply(result, i)
 
     return result
+
 
 def multiply(number1_list, number2):
     """
@@ -72,12 +76,13 @@ def multiply(number1_list, number2):
         carry_over = product // 10
 
     # If there is anything more to carry over, the result list will have more digits than the original list
-    while (carry_over > 0):
+    while carry_over > 0:
         new_digit = carry_over % 10
         number1_list.append(str(new_digit))
         carry_over = carry_over // 10
 
     return number1_list
+
 
 def main():
     # Using recursive
@@ -102,6 +107,7 @@ def main():
     result_list = factorial_3(1000)
     result = sum(int(i) for i in result_list)
     print("Result is {0} found in {1} seconds".format(result, time.time() - start))
+
 
 if __name__ == '__main__':
     main()

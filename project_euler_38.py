@@ -17,6 +17,7 @@
 """
 import time
 
+
 def is_pandigital(*numbers):
     """
     Decide if a list of numbers, when concatenating to each other, create a pandigital
@@ -35,6 +36,7 @@ def is_pandigital(*numbers):
 
     # The string is pandigital if each digit from 1 to 9 appears only once
     return all(digit in test_string for digit in digit_list)
+
 
 def find_max_pandigital():
     """
@@ -137,8 +139,8 @@ def find_max_pandigital_2():
 
     return max_value
 
-def main():
 
+def main():
     # Searching with 'brute force'
     start_time = time.time()
     result = find_max_pandigital()
@@ -148,6 +150,7 @@ def main():
     start_time = time.time()
     result = find_max_pandigital_2()
     print("Method 2: Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

@@ -8,6 +8,7 @@
 """
 import time
 
+
 # This approach is similar to that used in Project Euler 35
 def find_prime_numbers_with_sieving(limit):
     """
@@ -16,7 +17,8 @@ def find_prime_numbers_with_sieving(limit):
     :param limit: the upper bound number
     :return: list containing all primes less than the limit
     """
-    # A boolean list, with index indicating number, value in that index is True if that number is prime, and False otherwise
+    # A boolean list, with index indicating number, value in that index is True if that number is prime,
+    # and False otherwise
     primes = [True] * limit
     # 0 and 1 are not prime
     primes[0], primes[1] = [False] * 2
@@ -26,9 +28,10 @@ def find_prime_numbers_with_sieving(limit):
         if value is True:
             primes[index * 2::index] = [False] * (((limit - 1) // index) - 1)
 
-    prime_list = [i for i in range(limit) if primes[i] == True]
+    prime_list = [i for i in range(limit) if primes[i]]
 
     return prime_list
+
 
 def is_pandigital(n):
     """
@@ -42,6 +45,7 @@ def is_pandigital(n):
 
     # The string is pandigital if each digit appears only once
     return all(digit in test_string for digit in digit_list)
+
 
 def find_max_pandigital_prime(limit):
     """
@@ -57,6 +61,7 @@ def find_max_pandigital_prime(limit):
         if is_pandigital(i):
             return i
 
+
 """
     Analysis:
     A n-digit pandigital number will have a form 123...n or the permutation of that. However, the number of digits will
@@ -71,14 +76,16 @@ def find_max_pandigital_prime(limit):
 
     The max 7-digit pandigital is 7654321, so we only need to limit the search up to this point
 """
-def main():
 
+
+def main():
     # Max number, as taken from the analysis above
-    MAX_NUMBER = 7654321
+    input_number = 7654321
 
     start_time = time.time()
-    result = find_max_pandigital_prime(MAX_NUMBER + 1)
+    result = find_max_pandigital_prime(input_number + 1)
     print("Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

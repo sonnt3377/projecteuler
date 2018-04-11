@@ -24,6 +24,7 @@
 """
 import time
 
+
 def num_digits(n):
     """
     Count the number of digit in number 'n'
@@ -37,6 +38,7 @@ def num_digits(n):
         n = n // 10
 
     return count
+
 
 def main():
     start_time = time.time()
@@ -56,11 +58,13 @@ def main():
         fibonacci_list[1] = fibonacci_list[2]
         fibonacci_list[2] = fibonacci_list[2] + temp
         # Update the index of the latest Fibonacci number.
-        # Though this index in the list is still 2 i.e. the third number, the 'index' in this context is the actual position
+        # Though this index in the list is still 2 i.e. the third number, the 'index' in this context is the actual
+        # position
         # of a number in a full Fibonacci list.
         result_index += 1
 
     print("Result is {0}, found in {1} seconds".format(result_index, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

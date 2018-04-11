@@ -32,6 +32,8 @@ def do_work():
     :return:
     """
     n = 2
+    m = 0
+    d = 0
     is_result_found = False
 
     while not is_result_found:

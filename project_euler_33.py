@@ -13,6 +13,7 @@
 """
 import time
 
+
 def order_number(number1, number2):
     """
     Order two numbers so that the larger number appears first
@@ -23,6 +24,7 @@ def order_number(number1, number2):
         return number2, number1
     else:
         return number1, number2
+
 
 def gcd(number1, number2):
     """
@@ -37,6 +39,7 @@ def gcd(number1, number2):
         return large_number
     else:
         return gcd(small_number, large_number % small_number)
+
 
 def do_work():
     """
@@ -67,17 +70,19 @@ def do_work():
         for d in range(1, a):
             for n in range(1, d):
                 # If condition in case 4 holds
-                if (10*n + a)/(10*a + d) == n/d:
-                    print("The fraction is: {0}/{1} = {2}/{3}".format(10*n + a, 10*a + d, n, d))
+                if (10 * n + a) / (10 * a + d) == n / d:
+                    print("The fraction is: {0}/{1} = {2}/{3}".format(10 * n + a, 10 * a + d, n, d))
                     nominator_product *= n
                     denominator_product *= d
 
     return denominator_product / gcd(nominator_product, denominator_product)
 
+
 def main():
     start_time = time.time()
     result = do_work()
     print("Result is {0} found in {1}".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

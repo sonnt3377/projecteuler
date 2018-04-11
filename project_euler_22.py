@@ -13,17 +13,19 @@
 """
 import time
 
+
 def read_data_from_file(file_name):
-    '''
+    """
     Read input data from file, and return a list containing all names
 
     :param file_name: input data file
     :return: list of names
-    '''
+    """
     f = open(file_name)
     name_list = f.read().replace('\"', '').split(",")
 
     return name_list
+
 
 def bubble_sort_names(name_list):
     """
@@ -32,12 +34,13 @@ def bubble_sort_names(name_list):
     :param name_list: list of names
     :return: list of sorted names
     """
-    for index in range(len(name_list)-1, 0, -1):
+    for index in range(len(name_list) - 1, 0, -1):
         for i in range(index):
-            if name_list[i] > name_list[i+1]:
+            if name_list[i] > name_list[i + 1]:
                 temp = name_list[i]
                 name_list[i] = name_list[i + 1]
                 name_list[i + 1] = temp
+
 
 def quick_sort_names(name_list):
     """
@@ -48,60 +51,65 @@ def quick_sort_names(name_list):
     """
     quick_sort_helper(name_list, 0, len(name_list) - 1)
 
-def quick_sort_helper(list, first, last):
+
+def quick_sort_helper(input_list, first, last):
     """
     Sort list of names based on alphabetical order using quick sort
     Ref: https://interactivepython.org/runestone/static/pythonds/SortSearch/TheQuickSort.html
 
-    :param list: list to be sorted
+    :param input_list: list to be sorted
     :param first: index of the first item
     :param last: index of the last item
     :return: the sorted list
     """
     if first < last:
-        pivot_point = partition(list, first, last)
-        quick_sort_helper(list, first, pivot_point - 1)
-        quick_sort_helper(list, pivot_point + 1, last)
+        pivot_point = partition(input_list, first, last)
+        quick_sort_helper(input_list, first, pivot_point - 1)
+        quick_sort_helper(input_list, pivot_point + 1, last)
 
-def partition(list, first, last):
+
+def partition(input_list, first, last):
     """
     Partition the list into two parts, separated by the list's first item.
     The left part of this list contains all items less than the first item,
     while the right part contains all items larger than the first item.
 
-    :param list: the list to be partitioned
+    :param input_list: the list to be partitioned
     :param first: index of the first item
     :param last: index of the last item
     :return: Position of the item that splits the list into two partitions.
     """
-    pivot_value = list[first]
+    pivot_value = input_list[first]
     left_mark = first + 1
     right_mark = last
 
     done = False
     while not done:
-        while left_mark <= right_mark and list[left_mark] <= pivot_value:
+        while left_mark <= right_mark and input_list[left_mark] <= pivot_value:
             left_mark = left_mark + 1
 
-        while list[right_mark] >= pivot_value and right_mark >= left_mark:
+        while input_list[right_mark] >= pivot_value and right_mark >= left_mark:
             right_mark = right_mark - 1
 
         if right_mark < left_mark:
             done = True
         else:
-            temp = list[left_mark]
-            list[left_mark] = list[right_mark]
-            list[right_mark] = temp
+            temp = input_list[left_mark]
+            input_list[left_mark] = input_list[right_mark]
+            input_list[right_mark] = temp
 
-    temp = list[first]
-    list[first] = list[right_mark]
-    list[right_mark] = temp
+    temp = input_list[first]
+    input_list[first] = input_list[right_mark]
+    input_list[right_mark] = temp
 
     return right_mark
 
+
 def calculate_name_score(name, index):
     """
-    Calculate scores for name at a certain index, with rule A = 1, B = 2, etc., then multiply by index to get final score
+    Calculate scores for name at a certain index, with rule A = 1, B = 2, etc., then multiply by index to get final
+    score
+
     :param name: the name to calculate score
     :param index: index of that name
     :return: the score of the name at that index
@@ -112,6 +120,7 @@ def calculate_name_score(name, index):
         score += ord(c) - 64
 
     return score * index
+
 
 def main():
     # Trying bubble sort

@@ -10,7 +10,8 @@
     4^2=16, 4^3=64, 4^4=256, 4^5=1024
     5^2=25, 5^3=125, 5^4=625, 5^5=3125
 
-    If they are then placed in numerical order, with any repeats removed, we get the following sequence of 15 distinct terms:
+    If they are then placed in numerical order, with any repeats removed, we get the following sequence of 15
+    distinct terms:
 
     4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125
 
@@ -18,6 +19,7 @@
 """
 import math
 import time
+
 
 def calculate_a_to_power_b(a_start, a_end, b_start, b_end):
     """
@@ -29,19 +31,20 @@ def calculate_a_to_power_b(a_start, a_end, b_start, b_end):
     :param b_end:
     :return:
     """
-    list = []
+    list1 = []
     a = a_start
     b = b_start
 
-    while(a <= a_end):
-        while(b <= b_end):
+    while a <= a_end:
+        while b <= b_end:
             temp = math.pow(a, b)
-            list.append(temp)
+            list1.append(temp)
             b += 1
         a += 1
         b = b_start
 
-    return list
+    return list1
+
 
 def remove_duplicate(input_list):
     """
@@ -57,12 +60,14 @@ def remove_duplicate(input_list):
 
     return output_list
 
+
 def main():
     start = time.time()
     result = len(remove_duplicate(calculate_a_to_power_b(2, 100, 2, 100)))
     elapsed = time.time() - start
 
     print("The result is {0}, found in {1} seconds".format(result, elapsed))
+
 
 if __name__ == '__main__':
     main()

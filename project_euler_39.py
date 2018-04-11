@@ -10,6 +10,7 @@
 """
 import time
 
+
 def find_number_of_solutions(p):
     """
     Find the number of solutions for certain value of the perimeter p
@@ -37,6 +38,7 @@ def find_number_of_solutions(p):
                 number_of_solutions += 1
 
     return number_of_solutions
+
 
 def find_optimal_p(limit):
     """
@@ -97,18 +99,20 @@ def find_optimal_p_2(limit):
 
     return result
 
+
 def main():
-    INPUT_NUMBER = 1000
+    input_number = 1000
 
     # Running time ~ O(n^3)
     start_time = time.time()
-    result = find_optimal_p(INPUT_NUMBER)
+    result = find_optimal_p(input_number)
     print("Method 1: Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
 
     # Running time ~ O(n^2)
     start_time = time.time()
-    result = find_optimal_p_2(INPUT_NUMBER)
+    result = find_optimal_p_2(input_number)
     print("Method 2: Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

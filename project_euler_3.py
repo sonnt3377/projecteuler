@@ -8,6 +8,7 @@
 import time
 import math
 
+
 def is_prime(number):
     """
     Checking if a number is a prime
@@ -26,6 +27,7 @@ def is_prime(number):
 
     return is_prime
 
+
 def find_largest_prime_factor_1(number):
     """
     Find largest prime factor using brute force
@@ -38,7 +40,7 @@ def find_largest_prime_factor_1(number):
     # Going through all numbers from 2 to square root of the input number to check if they are the factors
     for i in range(2, int(math.sqrt(number))):
         # If the number is a divisor
-        if (number % i == 0):
+        if number % i == 0:
             factor1 = number // i
             factor2 = i
 
@@ -50,6 +52,7 @@ def find_largest_prime_factor_1(number):
                 largest_factor = factor2
 
     return largest_factor
+
 
 def find_largest_prime_factor_2(number):
     """
@@ -82,6 +85,7 @@ def find_largest_prime_factor_2(number):
 
     return largest_factor
 
+
 def main():
     input_number = 600851475143
 
@@ -95,6 +99,7 @@ def main():
     start_time = time.time()
     result = find_largest_prime_factor_2(input_number)
     print("Result is {0} found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

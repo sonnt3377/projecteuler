@@ -1,7 +1,8 @@
 """
     Project Euler 35: Circular primes
 
-    The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime.
+    The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are
+    themselves prime.
 
     There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
 
@@ -9,6 +10,7 @@
 """
 import math
 import time
+
 
 def is_prime(number):
     """
@@ -22,6 +24,7 @@ def is_prime(number):
             return False
 
     return True
+
 
 def is_circular_prime(number):
     """
@@ -38,6 +41,7 @@ def is_circular_prime(number):
 
     return True
 
+
 def find_prime_numbers(limit):
     """
     Find all prime numbers less than the limit
@@ -53,6 +57,7 @@ def find_prime_numbers(limit):
 
     return prime_list
 
+
 # This approach is similar to that in Project Euler 27
 def find_prime_numbers_with_sieving(limit):
     """
@@ -61,7 +66,8 @@ def find_prime_numbers_with_sieving(limit):
     :param limit: the upper bound number
     :return: list containing all primes less than the limit
     """
-    # A boolean list, with index indicating number, value in that index is True if that number is prime, and False otherwise
+    # A boolean list, with index indicating number, value in that index is True if that number is prime, and False
+    # otherwise
     primes = [True] * limit
     # 0 and 1 are not prime
     primes[0], primes[1] = [False] * 2
@@ -71,9 +77,10 @@ def find_prime_numbers_with_sieving(limit):
         if value is True:
             primes[index * 2::index] = [False] * (((limit - 1) // index) - 1)
 
-    prime_list = [i for i in range(limit) if primes[i] == True]
+    prime_list = [i for i in range(limit) if primes[i]]
 
     return prime_list
+
 
 def find_circular_primes(limit):
     """
@@ -88,6 +95,7 @@ def find_circular_primes(limit):
 
     return len(circular_prime_list)
 
+
 def find_circular_primes_with_sieving(limit):
     """
     Find the number of circular prime less than the limit using sieving
@@ -101,18 +109,20 @@ def find_circular_primes_with_sieving(limit):
 
     return len(circular_prime_list)
 
+
 def main():
-    INPUT_NUMBER = 1000000
+    input_number = 1000000
 
     # Test sieving method
     start_time = time.time()
-    result = find_circular_primes_with_sieving(INPUT_NUMBER)
+    result = find_circular_primes_with_sieving(input_number)
     print("Result is {0} found in {1} seconds".format(result, time.time() - start_time))
 
     # Test non-sieving method
     start_time = time.time()
-    result = find_circular_primes(INPUT_NUMBER)
+    result = find_circular_primes(input_number)
     print("Result is {0} found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

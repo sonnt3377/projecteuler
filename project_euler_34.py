@@ -26,16 +26,17 @@ import math
     So we only need to search for up to n = 7 digits, with the max possible value is 7*9!
 """
 
+
 def do_work():
     # A list containing pre-calculated factorial of number from 0 to 9
     factorial_list = [math.factorial(i) for i in range(0, 10)]
     # The sum of all numbers which are equal to the sum of the factorial of their digits.
-    sum = 0
+    sum_of_number = 0
     # Max search range, as discussed in the Analysis part
-    MAX_RANGE = 2540160
+    max_range = 2540160
 
     # Start from 3, as 1 and 2 are excluded
-    for i in range(3, MAX_RANGE + 1):
+    for i in range(3, max_range + 1):
         number = i
         factorial_sum = 0
 
@@ -48,14 +49,16 @@ def do_work():
         # If the number is equal to the sum of the factorials of its digits, it satisfies the requirement.
         if factorial_sum == i:
             print("The number is {0}".format(i))
-            sum += i
+            sum_of_number += i
 
-    return sum
+    return sum_of_number
+
 
 def main():
     start_time = time.time()
     result = do_work()
     print("Result is {0} found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

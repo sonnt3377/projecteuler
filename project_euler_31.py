@@ -14,6 +14,7 @@
 
 import time
 
+
 def calculate_with_dp(target_number):
     """
     Calculate the number of combinations using dynamic programming
@@ -41,7 +42,8 @@ def calculate_with_dp(target_number):
     # Then ways[] only contains elements with value = 1 e.g there is only one way to do that for all numbers from
     # 0 to 200.
     # When i = 2, we can use either 1 penny or 2 penny or any combination to fill in ways[]
-    # Then the number of ways[] = the previous number of ways[] (for 1 penny) plus any other possible ways using 2 penny.
+    # Then the number of ways[] = the previous number of ways[] (for 1 penny) plus any other possible ways using 2
+    # penny.
     # Not all numbers in ways[] get this updated though, it depends on the combinations.
     # And so on for other i in coins list.
     for i in range(len(coins)):
@@ -49,6 +51,7 @@ def calculate_with_dp(target_number):
             ways[j] += ways[j - coins[i]]
 
     return ways
+
 
 def calculate_with_brute_force(target_number):
     """
@@ -69,6 +72,7 @@ def calculate_with_brute_force(target_number):
                                 ways += 1
 
     return ways
+
 
 # £2 (200p), bigger numbers will show larger difference between the two algorithms.
 number = 200

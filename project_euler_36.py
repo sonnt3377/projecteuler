@@ -9,7 +9,8 @@
 """
 import time
 
-def  is_palindrome_base_10(number):
+
+def is_palindrome_base_10(number):
     """
     Check if a number is a palindrome in base 10
 
@@ -20,6 +21,7 @@ def  is_palindrome_base_10(number):
         return True
 
     return False
+
 
 def is_palindrome_base_2(number):
     """
@@ -36,6 +38,7 @@ def is_palindrome_base_2(number):
 
     return False
 
+
 def find_sum(limit):
     """
     Find sum of all numbers less than a limit, which are palindromic in both base 10 and base 2
@@ -43,20 +46,22 @@ def find_sum(limit):
     :param limit: the upper limit
     :return: the sum
     """
-    sum = 0
+    the_sum = 0
 
     for i in range(limit):
         if is_palindrome_base_10(i) and is_palindrome_base_2(i):
-            sum += i
+            the_sum += i
 
-    return sum
+    return the_sum
+
 
 def main():
-    INPUT_NUMBER = 1000000
+    input_numer = 1000000
 
     start_time = time.time()
-    result = find_sum(INPUT_NUMBER)
+    result = find_sum(input_numer)
     print("Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

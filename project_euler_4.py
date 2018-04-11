@@ -9,6 +9,7 @@
 import time
 import itertools
 
+
 def brute_force_search():
     """
     Finding the largest palindromes with brute force
@@ -28,6 +29,7 @@ def brute_force_search():
             number2 = j
 
     return largest_palindrome, number1, number2
+
 
 def reverse_search():
     """
@@ -66,16 +68,21 @@ def reverse_search():
 
     return palindrome, number1, number2
 
+
 def main():
     # Brute force search
     start_time = time.time()
     result = brute_force_search()
-    print("Brute force search: the palindrome is {0}, made of {1} and {2}. Result found in {3} seconds".format(result[0], result[1], result[2], time.time() - start_time))
+    print(
+        "Brute force search: the palindrome is {0}, made of {1} and {2}. Result found in {3} seconds".
+            format(result[0], result[1], result[2], time.time() - start_time))
 
     # Reverse search
     start_time = time.time()
     result = reverse_search()
-    print("Reverse search: the palindrome is {0}, made of {1} and {2}. Result found in {3} seconds".format(result[0], result[1], result[2], time.time() - start_time))
+    print("Reverse search: the palindrome is {0}, made of {1} and {2}. Result found in {3} seconds".
+          format(result[0], result[1], result[2], time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

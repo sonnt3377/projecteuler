@@ -18,6 +18,7 @@
 import time
 from math import floor
 
+
 def get_day_of_week(year, month, day):
     """
     Return the week day for the day indicated by day/month/year
@@ -34,9 +35,9 @@ def get_day_of_week(year, month, day):
     
     w = (d + floor(2.6*m-0.2) + y + floor(y/4) + floor(c/4) - 2*c) mod 7
     
-    Y is the year minus 1 for January or February, and the year for any other month
-    y is the last 2 digits of Y
-    c is the first 2 digits of Y
+    y is the year minus 1 for January or February, and the year for any other month
+    y is the last 2 digits of y
+    c is the first 2 digits of y
     d is the day of the month (1 to 31)
     m is the original month number shifted by 2 (March=1, ... , February=12)
     w is the day of week (0 = Sunday, ... ,6 = Saturday). If w is negative you have to add 7 to it.
@@ -44,17 +45,18 @@ def get_day_of_week(year, month, day):
 
     m = (month - 3) % 12 + 1
     if m > 10:
-        Y = year - 1
+        y = year - 1
     else:
-        Y = year
-    y = Y % 100
-    c = (Y - (Y % 100)) / 100
+        y = year
+    y = y % 100
+    c = (y - (y % 100)) / 100
     d = day
 
     # Disparate Gaussian algorithm
     w = (d + floor(2.6 * m - 0.2) + y + floor(y / 4) + floor(c / 4) - 2 * c) % 7
 
     return int(w)
+
 
 def get_total_first_of_month(target_day, year_start, year_end):
     """
@@ -74,6 +76,7 @@ def get_total_first_of_month(target_day, year_start, year_end):
                 total += 1
 
     return total
+
 
 start = time.time()
 # Counting the number of Sundays, i.e. 0, in first day of the month

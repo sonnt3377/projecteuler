@@ -20,6 +20,7 @@ import time
 
 prime_list = [2, 3, 5, 7, 11, 13, 17]
 
+
 def are_sub_strings_divisible(string):
     """
     Check if sub strings created out of an input string are divisible with the condition above
@@ -33,6 +34,7 @@ def are_sub_strings_divisible(string):
 
     return True
 
+
 def find_the_sum(string):
     """
     Return sum of all 0 to 9 pandigital numbers with divisible sub-strings
@@ -40,7 +42,7 @@ def find_the_sum(string):
     :param string: contains all digits from 0 to 9, each appears once, used as inputs to find 0 to 9 pandigital numbers
     :return: the sum
     """
-    sum = 0
+    the_sum = 0
 
     # Search for all 10-digit pandigital numbers
     for perm in itertools.permutations(string):
@@ -52,15 +54,16 @@ def find_the_sum(string):
 
         # Check for the divisibility property
         if are_sub_strings_divisible(temp):
-            sum += int(temp)
+            the_sum += int(temp)
 
-    return sum
+    return the_sum
+
 
 def main():
-
     start_time = time.time()
     result = find_the_sum('0123456789')
     print("The result is {0}, found in {1} seconds".format(result, time.time() - start_time))
+
 
 if __name__ == "__main__":
     main()

@@ -15,6 +15,7 @@ import functools
 import operator
 import time
 
+
 def calculate_the_product():
     """
     Calculating the product of d1 x d10 x d100 x d1000 x d10000 x d100000 x d1000000
@@ -32,11 +33,11 @@ def calculate_the_product():
 
     Depending on n, one can calculate which group that digit belongs to.
     """
-    MAX_NUMBER_OF_DIGIT = 1000000
+    max_number_of_digit = 1000000
     # Approximating the actual number corresponding to the max digit e.g. 1000000
     # This number should be a 6-digit number
     # We add 10 to cover a bit more than that exact number
-    number = (MAX_NUMBER_OF_DIGIT - 9 - 180 -2700 - 36000 - 450000) // 6 + 99999 + 10
+    number = (max_number_of_digit - 9 - 180 - 2700 - 36000 - 450000) // 6 + 99999 + 10
 
     # Create a list containing all numbers from 1 to that number of interest
     string = ""
@@ -44,16 +45,18 @@ def calculate_the_product():
         string += str(i)
 
     digit_list = list(string)
-    result_digits = [int(digit_list[10**i - 1]) for i in range(7)]
+    result_digits = [int(digit_list[10 ** i - 1]) for i in range(7)]
     product = functools.reduce(operator.mul, result_digits, 1)
 
     return result_digits, product
 
-def main():
 
+def main():
     start_time = time.time()
     result_digits, product = calculate_the_product()
-    print("The result is {0}, found in {1} seconds. The digits are {2}".format(product, time.time() - start_time, result_digits))
+    print("The result is {0}, found in {1} seconds. The digits are {2}".format(product, time.time() - start_time,
+                                                                               result_digits))
+
 
 if __name__ == "__main__":
     main()
