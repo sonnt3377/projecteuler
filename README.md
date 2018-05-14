@@ -1,3 +1,3 @@
 # Project Euler
 
-Solutions to Project Euler problems
+Solutions to Project Euler problems.
