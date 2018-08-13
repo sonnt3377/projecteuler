@@ -29,17 +29,39 @@ def is_lychrel_number(n):
     :param n: the number to be checked
     :return: True if the number is Lychrel, False otherwise
     """
+    the_sum = n
     # Iterate up to 50 times
-    for i in range(1, 51):
-        sum = n + int(str(n)[::-1])
-        if project_euler.is_palindrome_base_10(sum):
-            return True
-            
+    for i in range(1, 50):
+        original = the_sum
+        inversed = int(str(original)[::-1]) 
+        the_sum = original + inversed
 
+        if project_euler.is_palindrome_base_10(the_sum):
+            return False
+
+    # This is a Lychrel number, concluded by exhaustive search (uo to 50 iterations)
+    return True
+
+
+def count_lychrel_number(limit):
+    """
+    Count the number of Lychrel numbers less than the limit
+
+    :param limit: the upper bound
+    :return: the number of Lychrel number below the limit
+    """
+    count = 0
+
+    for i in range(1, limit + 1):
+        if is_lychrel_number(i):
+            count += 1
+
+    return count
+        
 
 def main():
     start_time = time.time()
-    result = 0
+    result = count_lychrel_number(10000)
     print("The result is {0}, found in {1} seconds.".format(result, time.time() - start_time))
 
 
