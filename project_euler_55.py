@@ -31,7 +31,7 @@ def is_lychrel_number(n):
     """
     the_sum = n
     # Iterate up to 50 times
-    for i in range(1, 50):
+    for _ in range(1, 50):
         original = the_sum
         inversed = int(str(original)[::-1]) 
         the_sum = original + inversed
