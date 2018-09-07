@@ -19,7 +19,8 @@ def find_largest_prime_factor_1(number):
     """
     largest_factor = 0
 
-    # Going through all numbers from 2 to square root of the input number to check if they are the factors
+    # Going through all numbers from 2 to square root of the input number to check if 
+    # they are the factors
     for i in range(2, int(math.sqrt(number))):
         # If the number is a divisor
         if number % i == 0:

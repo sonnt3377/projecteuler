@@ -1,8 +1,8 @@
 """
     Project Euler 18
 
-    By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from
-    top to bottom is 23.
+    By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total
+    from top to bottom is 23.
 
     3
     7 4
@@ -53,19 +53,26 @@ def recursive_sum(input_data, row_number):
     # If it is the top row, then we are done
     if len(input_data[row_number]) == 1:
         return input_data[row_number][0]
+
     # If not the top row, then use recursive
-    else:
-        return recursive_sum(input_data, row_number - 1)
+    return recursive_sum(input_data, row_number - 1)
 
 
-# Loading lines of data into list, each list item is one line
-rows = []
-with open("project_euler_18_data") as f:
-    for line in f:
-        rows.append([int(i) for i in line.rstrip('\n').split(" ")])
+def main():
+    """
+    Test method
+    """
+    # Loading lines of data into list, each list item is one line
+    rows = []
+    with open("project_euler_18_data") as file:
+        for line in file:
+            rows.append([int(i) for i in line.rstrip('\n').split(" ")])
 
-start = time.time()
-result = recursive_sum(rows, len(rows) - 2)  # start from second to last row, then work upward
-elapsed = time.time() - start
+    start = time.time()
+    result = recursive_sum(rows, len(rows) - 2)  # start from second to last row, then work upward
+    elapsed = time.time() - start
 
-print("{0} found in {1:.8f} seconds".format(result, elapsed))
+    print("{0} found in {1:.8f} seconds".format(result, elapsed))
+
+if __name__ == '__main__':
+    main()

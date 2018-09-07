@@ -27,14 +27,11 @@ def get_day_of_week(year, month, day):
     :param month:
     :param day:
     :return: the week day i.e. Sunday (0) to Saturday (6)
-    """
 
-    """
     Gaussian algorithm to determine day of week
     https://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Disparate_variation
-    
+
     w = (d + floor(2.6*m-0.2) + y + floor(y/4) + floor(c/4) - 2*c) mod 7
-    
     y is the year minus 1 for January or February, and the year for any other month
     y is the last 2 digits of y
     c is the first 2 digits of y
@@ -44,10 +41,12 @@ def get_day_of_week(year, month, day):
     """
 
     m = (month - 3) % 12 + 1
+
     if m > 10:
         y = year - 1
     else:
         y = year
+    
     y = y % 100
     c = (y - (y % 100)) / 100
     d = day
@@ -78,9 +77,17 @@ def get_total_first_of_month(target_day, year_start, year_end):
     return total
 
 
-start = time.time()
-# Counting the number of Sundays, i.e. 0, in first day of the month
-result = get_total_first_of_month(0, 1901, 2000)
-elapsed = time.time() - start
+def main():
+    """
+    Test method
+    """
+    start = time.time()
+    # Counting the number of Sundays, i.e. 0, in first day of the month
+    result = get_total_first_of_month(0, 1901, 2000)
+    elapsed = time.time() - start
 
-print("Number of Sundays as the first day of a month is {0} found in {1:.8f} seconds".format(result, elapsed))
+    print("Number of Sundays as the first day of a month is {0} found in {1:.8f} seconds".format(result, elapsed))
+
+
+if __name__ == '__main__':
+    main()

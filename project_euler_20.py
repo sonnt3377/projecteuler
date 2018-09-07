@@ -12,44 +12,45 @@
 import time
 
 
-def factorial_1(n):
+def factorial_1(number):
     """
     Finding n! using recursive
 
-    :param n: input number
+    :param number: input number
     :return: n!
     """
-    if n == 0:
+    if number == 0:
         return 1
-    else:
-        return n * factorial_1(n - 1)
+
+    return number * factorial_1(number - 1)
 
 
-def factorial_2(n):
+def factorial_2(number):
     """
     Finding n! using multiplication
 
-    :param n: input number
+    :param number: input number
     :return: n!
     """
     result = 1
-    for i in range(2, n + 1):
+
+    for i in range(2, number + 1):
         result *= i
 
     return result
 
 
-def factorial_3(n):
+def factorial_3(number):
     """
     Finding n! by multiplying and storing digits in an array.
     This array is a representation of the factorial number, but not the number itself.
 
-    :param n: input number
+    :param number: input number
     :return: array where each item represents a digit in the factorial number, in reverse order
     """
     result = [1]
 
-    for i in range(2, n + 1):
+    for i in range(2, number + 1):
         result = multiply(result, i)
 
     return result
@@ -68,10 +69,10 @@ def multiply(number1_list, number2):
     # Initially, there is nothing to carry over to the higher digits
     carry_over = 0
 
-    for i in range(len(number1_list)):
-        product = int(number1_list[i]) * number2 + carry_over
+    for number in number1_list:
+        product = int(number) * number2 + carry_over
         # Update the least significant digit in number1_list with the result digit
-        number1_list[i] = product % 10
+        number = product % 10
         # Carry the remaining value over to higher digits
         carry_over = product // 10
 
@@ -85,6 +86,9 @@ def multiply(number1_list, number2):
 
 
 def main():
+    """
+    Test method
+    """
     # Using recursive
     # This method cannot work with large numbers due to the recursion limits
     # It also has problem when multiplying large numbers

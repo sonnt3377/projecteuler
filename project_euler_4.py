@@ -70,12 +70,14 @@ def reverse_search():
 
 
 def main():
+    """
+    Test function
+    """
     # Brute force search
     start_time = time.time()
     result = brute_force_search()
-    print(
-        "Brute force search: the palindrome is {0}, made of {1} and {2}. Result found in {3} seconds".
-            format(result[0], result[1], result[2], time.time() - start_time))
+    print("Brute force search: the palindrome is {0}, made of {1} and {2}. Result found in {3} seconds".
+          format(result[0], result[1], result[2], time.time() - start_time))
 
     # Reverse search
     start_time = time.time()
