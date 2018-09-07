@@ -3,25 +3,24 @@
     Test performance of different factorial methods
 
 """
-
 import math
 import time
 
-
-def conventional_factorial(n):
+def conventional_factorial(number):
     """
     Calculate factorial n! = 1 x 2 x 3 x ... x n using recursive
 
-    :param n: input number
-    :return: n!
+    :param number: input number
+    :return: number!, return 0 if number < 1
     """
-    if n < 1:
+    if number < 1:
         print("There is no factorial value")
-    else:
-        if n == 1:
-            return 1
-        else:
-            return n * conventional_factorial(n - 1)
+        return 0
+
+    if number == 1:
+        return 1
+
+    return number * conventional_factorial(number - 1)
 
 
 def range_prod(low, high):
@@ -39,25 +38,31 @@ def range_prod(low, high):
     if low + 1 < high:
         middle = (high + low) // 2
         return range_prod(low, middle) * range_prod(middle + 1, high)
+
     if low == high:
         return low
+
     return low * high
 
 
-def tree_factorial(n):
+def tree_factorial(number):
     """
     Implement factorial using range_prod above.
     Ref: https://stackoverflow.com/questions/16325988/factorial-of-a-large-number-in-python
 
-    :param n: input number
-    :return: n!
+    :param number: input number
+    :return: number!
     """
-    if n < 2:
+    if number < 2:
         return 1
-    return range_prod(1, n)
+
+    return range_prod(1, number)
 
 
 def main():
+    """
+    Test function
+    """
     # Test number
     input_number = 900  # 20000
 

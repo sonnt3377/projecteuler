@@ -28,6 +28,9 @@ def find_the_sum(number):
 
 
 def main():
+    """
+    Test function
+    """
     start_time = time.time()
     result = find_the_sum(1000)
     print("Result is {0} found in {1} seconds".format(result, time.time() - start_time))

@@ -72,3 +72,4 @@ def is_palindrome_base_2(number):
         return True
 
     return False
+    

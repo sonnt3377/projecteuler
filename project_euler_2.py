@@ -38,7 +38,9 @@ def find_sum_of_even_fibonnaci_terms(number):
 
 
 def main():
-    pass
+    """
+    Test function
+    """
     start_time = time.time()
     result = find_sum_of_even_fibonnaci_terms(4000000)
     print("Result is {0} found in {1} seconds".format(result, time.time() - start_time))
