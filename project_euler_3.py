@@ -7,25 +7,7 @@
 """
 import time
 import math
-
-
-def is_prime(number):
-    """
-    Checking if a number is a prime
-
-    :param number: input number
-    :return: True if the number is prime, False otherwise
-    """
-    # To check if a number is a prime, we need to check if it is divisible by all numbers from 2 to number - 1
-    # In reality, we only need to check up to the number ~ square root of the input number
-    is_prime = True
-
-    for i in range(2, int(math.sqrt(number)) + 1):
-        if number % i == 0:
-            is_prime = False
-            break
-
-    return is_prime
+from project_euler import is_prime
 
 
 def find_largest_prime_factor_1(number):
@@ -87,6 +69,9 @@ def find_largest_prime_factor_2(number):
 
 
 def main():
+    """
+    Test function
+    """
     input_number = 600851475143
 
     # Test with algorithm 1
