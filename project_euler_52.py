@@ -1,55 +1,28 @@
 """
     Project Euler 52: Permuted multiples
 
-    It can be seen that the number, 125874, and its double, 251748, contain exactly the same digits, but in a
-    different order.
+    It can be seen that the number, 125874, and its double, 251748, contain exactly the same
+    digits, but in a different order.
 
-    Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain the same digits.
+    Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain the same
+    digits.
 """
 import time
+from project_euler import is_permutation
 
 
-def is_permutation(number1, number2):
-    """
-    Decide if two numbers are permutation of each other
-
-    :param number1:
-    :param number2:
-    :return: True if two numbers are permutation of each other, False otherwise
-    """
-    # Identical numbers
-    if number1 == number2:
-        return False
-
-    list1 = list(str(number1))
-    list2 = list(str(number2))
-
-    # If two numbers are of different size, they are not permutation of each other
-    if len(list1) != len(list2):
-        return False
-
-    # Check if the digits are the same
-    if set(list1) == set(list2):
-        return True
-
-    return False
-
-
+# Analysis:
+#   If n is the smallest integer with such property, then the first digit of n should be
+#   1, because otherwise, 6 * n will have more digits than n.
+#   More precisely, the range of possible values of n cannot exceed  10 * n / 6 because
+#   6 * n will have more digits otherwise.
+#   To find the solution, we search for all numbers n, from that with 1 digit and get larger,
+#   until we find a solution. The only constraint is mentioned above.
 def find_the_number():
     """
     Find the smallest number satisfies the condition
 
     :return: the number
-    """
-    """
-        Analysis:
-            If n is the smallest integer with such property, then the first digit of n should be 1, because otherwise, 
-            6 * n will have more digits than n.
-            More precisely, the range of possible values of n cannot exceed  10 * n / 6 because  6 * n will have more 
-            digits otherwise.
-            
-            To find the solution, we search for all numbers n, from that with 1 digit and get larger, until we find a 
-            solution. The only constraint is mentioned above.
     """
     smallest_number = 1
     is_result_found = False
@@ -80,6 +53,9 @@ def find_the_number():
 
 
 def main():
+    """
+    Test
+    """
     start_time = time.time()
     result = find_the_number()
     print("The result is {0}, found in {1} seconds".format(result, time.time() - start_time))

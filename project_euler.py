@@ -141,3 +141,29 @@ def is_pentagonal(number):
     """
     test = (math.sqrt(24 * number + 1) + 1) / 6
     return test == int(test)
+
+
+def is_permutation(number1, number2):
+    """
+    Decide if two numbers are permutation of each other
+
+    :param number1:
+    :param number2:
+    :return: True if two numbers are permutation of each other, False otherwise
+    """
+    # Identical numbers
+    if number1 == number2:
+        return False
+
+    list1 = list(str(number1))
+    list2 = list(str(number2))
+
+    # If two numbers are of different size, they are not permutation of each other
+    if len(list1) != len(list2):
+        return False
+
+    # Check if the digits are the same
+    if set(list1) == set(list2):
+        return True
+
+    return False
