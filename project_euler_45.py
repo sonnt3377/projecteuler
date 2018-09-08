@@ -11,33 +11,18 @@
     Find the next triangle number that is also pentagonal and hexagonal.
 """
 import time
-import math
+import project_euler
 
+# Analysis:
+#     Ref: https://www.mathblog.dk/project-euler-45-next-triangle-pentagonal-hexagonal-number/
+#     A hexagonal number is a triangular number with odd n because:
+#     T(2m-1) = (2m-1)2m/2 = m(2m-1) = H(m)
 
-# Identical method to that in Project Euler 44
-def is_pentagonal_number(n):
-    """
-    Check if an integer is a pentagon
-    Ref: https://en.wikipedia.org/wiki/Pentagonal_number#Tests_for_pentagonal_numbers
-
-    :param n: number to check
-    :return: True if the number is pentagonal, False otherwise.
-    """
-    test = (math.sqrt(24 * n + 1) + 1) / 6
-    return test == int(test)
-
-
+#   So all we need is to check for hexagonal and pentagonal numbers, because a hexagonal
+#   number is actually a triangular number
 def do_work():
     """
     Find the triangle number that is also pentagonal and hexagonal
-
-    Analysis:
-        Ref: https://www.mathblog.dk/project-euler-45-next-triangle-pentagonal-hexagonal-number/
-        A hexagonal number is a triangular number with odd n because:
-        T(2m-1) = (2m-1)2m/2 = m(2m-1) = H(m)
-
-    So all we need is to check for hexagonal and pentagonal numbers, because a hexagonal number is actually a
-        triangular number
 
     :return:
     """
@@ -47,7 +32,7 @@ def do_work():
     while True:
         hexagonal_number = m * (2 * m - 1)
         # Result is found if that hexagonal number is also pentagonal
-        if is_pentagonal_number(hexagonal_number):
+        if project_euler.is_pentagonal(hexagonal_number):
             break
         m += 1
 
@@ -55,6 +40,9 @@ def do_work():
 
 
 def main():
+    """
+    Test
+    """
     start_time = time.time()
     result = do_work()
     print("The next triangular number that is also pentagonal and hexagonal is {0}, "
