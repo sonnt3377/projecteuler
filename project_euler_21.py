@@ -14,60 +14,65 @@
 import time
 
 
-def find_divisor_sum(n):
+def find_divisor_sum(number):
     """
-    Find sum of all proper divisors of a number n
+    Find sum of all proper divisors of a number
 
-    :param n:
-    :return: sum of all proper divisors of n
+    :param number:
+    :return: sum of all proper divisors of that number
     """
     sum1 = 0
-    for i in range(1, n):
-        if n % i == 0:
+    for i in range(1, number):
+        if number % i == 0:
             # i is a divisor
             sum1 += i
     return sum1
 
 
-def find_amicable_pairs(n):
+def find_amicable_pairs(number):
     """
-    Find all amicable pairs for numbers less than n
+    Find all amicable pairs for numbers less than the number
 
-    :param n:
+    :param number:
     :return: a list of all amicable pairs
     """
 
     # Create a list containing sum of all proper divisors of i, with i ranging from 1 to n.
     # This list contains n items
-    list_of_sum = [find_divisor_sum(i) for i in range(1, n + 1)]
+    list_of_sum = [find_divisor_sum(i) for i in range(1, number + 1)]
 
     # 'pairs' is a list in which each component is an amicable pair
     pairs = []
 
     # Loop through 'list_of_sum' to find every amicable pairs
-    for i in range(1, n):
+    for i in range(1, number):
         temp = list_of_sum[i]
         # Check if there is any number that forms a pair with this 'temp' value
-        if (temp >= 1 and i + 1 < temp <= n and list_of_sum[temp - 1] == i + 1):
+        if (temp >= 1 and i + 1 < temp <= number and list_of_sum[temp - 1] == i + 1):
             # Find the pair, add it to 'pairs'
             pairs.append([i + 1, temp])
 
     return pairs
 
 
-# Find sum of all pairs
 def find_amicable_sum(pairs):
+    """
+    Find sum of all pairs
+    """
     return sum([sum(pair) for pair in pairs])
 
 
 def main():
+    """
+    Test function
+    """
     number = 10000
     start_time = time.time()
     result = find_amicable_sum(find_amicable_pairs(number))
     stop_time = time.time()
 
     print("Result is {0} found in {1} seconds".format(result, stop_time - start_time))
-
+    
 
 if __name__ == '__main__':
     main()

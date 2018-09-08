@@ -21,8 +21,8 @@ def read_data_from_file(file_name):
     :param file_name: input data file
     :return: list of names
     """
-    f = open(file_name)
-    name_list = f.read().replace('\"', '').split(",")
+    file = open(file_name)
+    name_list = file.read().replace('\"', '').split(",")
 
     return name_list
 
@@ -116,13 +116,16 @@ def calculate_name_score(name, index):
     """
     score = 0
     # Loop through all letters in 'name' and convert their corresponding ASCII numbers to numbers from 1 to 26
-    for c in name:
-        score += ord(c) - 64
+    for char in name:
+        score += ord(char) - 64
 
     return score * index
 
 
 def main():
+    """
+    Test function
+    """
     # Trying bubble sort
     start_time = time.time()
     total_score = 0
