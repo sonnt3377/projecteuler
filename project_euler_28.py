@@ -17,14 +17,14 @@ import math
 import time
 
 
-def sum_of_corners(n):
+def sum_of_corners(num):
     """
-    Calculate the sum of the four corners of a square size 2n + 1
+    Calculate the sum of the four corners of a square size 2num + 1
 
-    :param n: input number
+    :param num: input number
     :return: the sum
     """
-    square_size = 2 * n + 1
+    square_size = 2 * num + 1
     corner_value_distance = square_size - 1
 
     # Finding the conner values
@@ -60,6 +60,9 @@ def diagonal_sum(size_of_square):
 
 
 def main():
+    """
+    Test function
+    """
     start_time = time.time()
     result = diagonal_sum(1001)
     elapsed = time.time() - start_time

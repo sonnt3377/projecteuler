@@ -25,22 +25,26 @@
 import time
 
 
-def num_digits(n):
+def num_digits(number):
     """
-    Count the number of digit in number 'n'
+    Count the number of digit in a number
 
-    :param n: input number
-    :return: the number of digit n contains
+    :param number: input number
+    :return: the number of digit that number contains
     """
     count = 0
-    while n > 0:
+
+    while number > 0:
         count += 1
-        n = n // 10
+        number = number // 10
 
     return count
 
 
 def main():
+    """
+    Test function
+    """
     start_time = time.time()
 
     # The list contains the first 3 Fibonacci numbers in the beginning

@@ -62,6 +62,9 @@ def remove_duplicate(input_list):
 
 
 def main():
+    """
+    Test function
+    """
     start = time.time()
     result = len(remove_duplicate(calculate_a_to_power_b(2, 100, 2, 100)))
     elapsed = time.time() - start

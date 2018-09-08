@@ -58,7 +58,7 @@ def do_work(number, a_limit, b_limit):
     """
     start_time = time.time()
 
-    p = sieve(number)
+    prime = sieve(number)
     a_max, b_max, max_sequence = 0, 0, 0
 
     try:
@@ -67,7 +67,7 @@ def do_work(number, a_limit, b_limit):
             # 80 primes as in the example, meaning that b > 80
             for b in range(80, b_limit + 1):
                 # 'b' must be a prime, otherwise the requirement does not satisfy when n = 0
-                if p[b] is False:
+                if prime[b] is False:
                     continue
                 # b must be greater than (- n^2 - a*n) since primes must be positive
                 # This should apply to n = 40 too so it becomes b > (-40^2 - 40*a)
@@ -77,7 +77,7 @@ def do_work(number, a_limit, b_limit):
                 sequence_length, n = 0, 0
 
                 # Calculate the number of consecutive primes
-                while p[n ** 2 + a * n + b] is True:
+                while prime[n ** 2 + a * n + b] is True:
                     sequence_length += 1
                     n += 1
 
@@ -94,6 +94,9 @@ def do_work(number, a_limit, b_limit):
 
 
 def main():
+    """
+    Test function
+    """
     # The first parameter, number is hand-picked so the list of prime numbers covers all possible primes produced
     # by certain a and b.
     # For |a| < 1000 and |b| <= 1000, and we know that the result should be more restrictive than n^2 - 79n + 1601

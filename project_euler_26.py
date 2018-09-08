@@ -20,17 +20,17 @@
 import time
 
 
-def find_recurring_cycle(n):
+def find_recurring_cycle(number):
     """
-    Find the recurring cycle of the faction 1/n
+    Find the recurring cycle of the faction 1/number
 
-    :param n: input number
+    :param number: input number
     :return: the number of digit representing the recurring cycle
     """
     # List indexes indicate remainders of 1/n operation at a certain point.
     # The list value at a corresponding division_counts indicates the number of division operation so far.
     # This list should only have maximum n items because a remainder cannot be larger than the number n
-    remainders = [0] * n
+    remainders = [0] * number
 
     # Initial nominator since we need to find 1/n
     nominator = 1
@@ -51,26 +51,26 @@ def find_recurring_cycle(n):
             # Prepare nominator for the next division step
             nominator *= 10
             # Divide and get new nominator
-            nominator %= n
+            nominator %= number
             division_counts += 1
     except IndexError:
         print("Index out of range.")
-        print("Total number of list items is {0}, index is {1}".format(n, nominator))
+        print("Total number of list items is {0}, index is {1}".format(number, nominator))
 
     return division_counts - 1
 
 
-def find_max_recurring_cycle(n):
+def find_max_recurring_cycle(num):
     """
-    Find the max recurring cycle for number less than or equal n
+    Find the max recurring cycle for number less than or equal num
 
-    :param n: input number
+    :param num: input number
     :return: max recurring cycle and the corresponding number
     """
     max_recurring_cycle = 0
     resulting_number = 0
 
-    for i in range(n, 1, -1):
+    for i in range(num, 1, -1):
         # We found the recurring_cycle already, do not need to test smaller number
         if i <= max_recurring_cycle:
             break
@@ -86,13 +86,16 @@ def find_max_recurring_cycle(n):
 
 
 def main():
-    n = int(input('Enter the integer number: '))
+    """
+    Test function
+    """
+    number = int(input('Enter the integer number: '))
     start_time = time.time()
-    output = find_max_recurring_cycle(n)
+    output = find_max_recurring_cycle(number)
     max_recurring_cycle = output[0]
     result_number = output[1]
 
-    print("The longest recurring cycle for 1/d where d < {0} is {1}. The number is {2}".format(n, max_recurring_cycle,
+    print("The longest recurring cycle for 1/d where d < {0} is {1}. The number is {2}".format(number, max_recurring_cycle,
                                                                                                result_number))
     print("Result found in {0} seconds".format(time.time() - start_time))
 

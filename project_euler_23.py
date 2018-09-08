@@ -121,6 +121,9 @@ def find_sum_of_non_abundant_numbers(number):
 
 
 def main():
+    """
+    Test function
+    """
     start_time = time.time()
     result = find_sum_of_non_abundant_numbers(UPPER_LIMIT)
     elapsed = time.time() - start_time
