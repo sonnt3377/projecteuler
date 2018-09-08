@@ -88,4 +88,38 @@ def is_palindrome_base_2(number):
         return True
 
     return False
-    
+
+
+def is_9_digit_pandigital(*numbers):
+    """
+    Decide if a list of numbers, when concatenating to each other, create a 9-digit
+    pandigital
+
+    :param numbers: list of numbers to test
+    :return: True if the concatenating of numbers create a pandigital, False otherwise
+    """
+    test_string = ""
+    digit_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    for number in numbers:
+        test_string += str(number)
+
+    # The string is not pandigital if it contains 0 or if it has more than 9 digits
+    if len(test_string) != 9 or '0' in test_string:
+        return False
+
+    # The string is pandigital if each digit from 1 to 9 appears only once
+    return all(digit in test_string for digit in digit_list)
+
+
+def is_pandigital(n):
+    """
+    Check if the number is a pandigital
+
+    :param n: input number
+    :return: True if the number is a pandigital, and False otherwise
+    """
+    test_string = str(n)
+    digit_list = [str(i) for i in range(1, len(test_string) + 1)]
+
+    # The string is pandigital if each digit appears only once
+    return all(digit in test_string for digit in digit_list)

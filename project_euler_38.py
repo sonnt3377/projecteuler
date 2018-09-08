@@ -41,7 +41,7 @@ def find_max_pandigital():
     # Search for all cases in A
     for four_digit_number in range(1000, 10000):
         # If a pandigital is found
-        if project_euler.is_pandigital(four_digit_number, four_digit_number * 2):
+        if project_euler.is_9_digit_pandigital(four_digit_number, four_digit_number * 2):
             pan_digital = int(str(four_digit_number) + str(four_digit_number * 2))
             if max_value < pan_digital:
                 max_value = pan_digital
@@ -49,7 +49,7 @@ def find_max_pandigital():
     # Search for all cases in B
     for three_digit_number in range(100, 1000):
         # If a pandigital is found
-        if project_euler.is_pandigital(three_digit_number, three_digit_number * 2, three_digit_number * 3):
+        if project_euler.is_9_digit_pandigital(three_digit_number, three_digit_number * 2, three_digit_number * 3):
             pan_digital = int(str(three_digit_number) + str(three_digit_number * 2) + str(three_digit_number * 3))
             if max_value < pan_digital:
                 max_value = pan_digital
@@ -57,7 +57,7 @@ def find_max_pandigital():
     # Search for all cases in C
     for two_digit_number in range(10, 100):
         # If a pandigital is found
-        if project_euler.is_pandigital(two_digit_number, two_digit_number * 2,
+        if project_euler.is_9_digit_pandigital(two_digit_number, two_digit_number * 2,
                                        two_digit_number * 3, two_digit_number * 4):
             pan_digital = int(str(two_digit_number) + str(two_digit_number * 2)
                               + str(two_digit_number * 3) + str(two_digit_number * 4))
@@ -67,7 +67,7 @@ def find_max_pandigital():
     # Search for all cases in D
     for one_digit_number in range(1, 10):
         # If a pandigital is found
-        if project_euler.is_pandigital(one_digit_number, one_digit_number * 2, one_digit_number * 3,
+        if project_euler.is_9_digit_pandigital(one_digit_number, one_digit_number * 2, one_digit_number * 3,
                                        one_digit_number * 4, one_digit_number * 5):
             pan_digital = int(str(one_digit_number) + str(one_digit_number * 2)
                               + str(one_digit_number * 3) + str(one_digit_number * 4) + str(one_digit_number * 5))
@@ -114,7 +114,7 @@ def find_max_pandigital_2():
 
     # We search from large numbers down until finding a pandigital, and stop, since we already find the largest
     for i in range(9876, 9123, -1):
-        if project_euler.is_pandigital(i, i * 2):
+        if project_euler.is_9_digit_pandigital(i, i * 2):
             max_value = int(str(i) + str(i * 2))
             break
 
