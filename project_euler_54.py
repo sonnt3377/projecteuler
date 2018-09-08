@@ -1,8 +1,8 @@
 """
     Project Euler 54: Poker hands
 
-        In the card game poker, a hand consists of five cards and are ranked, from lowest to highest, in the following
-        way:
+        In the card game poker, a hand consists of five cards and are ranked, from lowest to
+        highest, in the following way:
 
             High Card: Highest value card.
             One Pair: Two cards of the same value.
@@ -18,10 +18,11 @@
         The cards are valued in the order:
         2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace.
 
-        If two players have the same ranked hands then the rank made up of the highest value wins; for example, a pair
-        of eights beats a pair of fives (see example 1 below). But if two ranks tie, for example, both players have a
-        pair of queens, then highest cards in each hand are compared (see example 4 below); if the highest cards tie
-        then the next highest cards are compared, and so on.
+        If two players have the same ranked hands then the rank made up of the highest value
+        wins; for example, a pair of eights beats a pair of fives (see example 1 below). But
+        if two ranks tie, for example, both players have a pair of queens, then highest cards
+        in each hand are compared (see example 4 below); if the highest cards tie then the next
+        highest cards are compared, and so on.
 
         Consider the following five hands dealt to two players:
         Hand	 	Player 1    	 	Player 2	 	        Winner
@@ -38,10 +39,11 @@
                     Full House          Full House
                     With Three Fours    with Three Threes
 
-        The file, poker.txt, contains one-thousand random hands dealt to two players. Each line of the file contains
-        ten cards (separated by a single space): the first five are Player 1's cards and the last five are Player 2's
-        cards. You can assume that all hands are valid (no invalid characters or repeated cards), each player's hand
-        is in no specific order, and in each hand there is a clear winner.
+        The file, poker.txt, contains one-thousand random hands dealt to two players.
+        Each line of the file contains ten cards (separated by a single space): the first
+        five are Player 1's cards and the last five are Player 2's cards. You can assume
+        that all hands are valid (no invalid characters or repeated cards), each player's
+        hand is in no specific order, and in each hand there is a clear winner.
 
         How many hands does Player 1 win?
 """
@@ -49,23 +51,24 @@ import time
 
 # Cards
 # T stands for 10, so we only use one letter to represent each card.
-cards = ("2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A")
+CARDS = ("2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A")
 # Suits
-suits = ("C", "D", "H", "S")
+SUITS = ("C", "D", "H", "S")
 
 
 def read_data_from_file(file_name):
     """
-    Read input data from file, and return a list, each item contains a pair of hands, one for each player.
+    Read input data from file, and return a list, each item contains a pair of hands, one
+    for each player.
 
     :param file_name: input data file
     :return: a list of dealt hands
     """
     dealt_hands = []
 
-    with open(file_name, "r") as f:
+    with open(file_name, "r") as file:
         # Split each line into two hands, one for each player
-        for line in f:
+        for line in file:
             temp_list = line.strip().split(" ")
             first_hand = tuple(temp_list[:5])
             second_hand = tuple(temp_list[5:])
@@ -106,13 +109,13 @@ def breakdown_hand(hand):
     # The list value shows how many cards with the same value are in a hand.
     value_list = [0] * 13
 
-    # The suit_list index corresponding to the suit 
+    # The suit_list index corresponding to the suit
     # 0 corresponds to C, 1 to D, 2 to H, and 3 to S
     suit_list = [0] * 4
 
     for card in hand:
-        value_list[cards.index(get_value(card))] += 1
-        suit_list[suits.index(get_suit(card))] += 1
+        value_list[CARDS.index(get_value(card))] += 1
+        suit_list[SUITS.index(get_suit(card))] += 1
 
     return value_list, suit_list
 
@@ -128,7 +131,8 @@ def get_high_single_card(breakdown_cards):
 
     for index, value in reversed(list(enumerate(card_values))):
         if value == 1 and value != check_straight(breakdown_cards) \
-                and value != check_flush(breakdown_cards) and check_straight_flush(breakdown_cards):
+           and value != check_flush(breakdown_cards) \
+           and check_straight_flush(breakdown_cards):
             return index + 2
 
     # This means the highest card value is 2.
@@ -140,7 +144,7 @@ def check_pairs(breakdown_cards):
     Check if a hand contains pairs, and if so, return the values of the pairs
 
     :param breakdown_cards:
-    :return: a list in the form [value1, value2] for where value1 and value2 are values 
+    :return: a list in the form [value1, value2] for where value1 and value2 are values
     for each pair. If there is no pair, then value1 and value2 = -1
     """
     card_values = breakdown_cards[0]
@@ -152,10 +156,10 @@ def check_pairs(breakdown_cards):
             # Get the value of the pair
             pair_values.append(index + 2)
 
-    # If pair_values does not contain enough pair, write -1 to indicate that there is 
+    # If pair_values does not contain enough pair, write -1 to indicate that there is
     # no other pair.
     # A hand should contain at most two pairs
-    for i in range(2 - len(pair_values)):
+    for _ in range(2 - len(pair_values)):
         pair_values.append(-1)
 
     return pair_values
@@ -199,8 +203,11 @@ def check_straight(breakdown_cards):
             if card_values[index + 1] != 1 or card_values[index + 2] != 1 or \
                     card_values[index + 3] != 1 or card_values[index + 4] != 1:
                 return -1
-            else:
-                return index + 4 + 2
+
+            return index + 4 + 2
+
+    # Should not reach this point
+    return -1
 
 
 def check_flush(breakdown_cards):
@@ -235,14 +242,14 @@ def check_full_house(breakdown_cards):
     Check to see if there is a full house
 
     :param breakdown_cards:
-    :return: a pair of card values, one for three of a kind and the other for the pair if there is a 
-    full house, return [-1, -1] otherwise.
+    :return: a pair of card values, one for three of a kind and the other for the pair if
+    there is a full house, return [-1, -1] otherwise.
     """
     card_values = breakdown_cards[0]
     pair_values = [-1, -1]
 
     for index, value in list(enumerate(card_values)):
-        if value == 1 or value == 4 or value == 5:
+        if value in (1, 4, 5):
             pair_values[0] = -1
             pair_values[1] = -1
             break
@@ -259,7 +266,7 @@ def check_four_of_a_kind(breakdown_cards):
     Check if a hand contains four cards of the same value
 
     :param breakdown_cards:
-    :return: the value of the cards, if the hand contains four cards of the same value, 
+    :return: the value of the cards, if the hand contains four cards of the same value,
     return -1 otherwise
     """
     card_values = breakdown_cards[0]
@@ -283,8 +290,8 @@ def check_straight_flush(breakdown_cards):
 
     if straight_value != -1 and flush_value != -1:
         return straight_value
-    else:
-        return -1
+
+    return -1
 
 
 def is_royal_flush(breakdown_cards):
@@ -300,11 +307,11 @@ def is_royal_flush(breakdown_cards):
     # Only need to check if there is a flush
     if is_same_suit == -1:
         return False
-    else:
-        # Check the last five cards
-        for value in card_values[8:]:
-            if value != 1:
-                return False
+
+    # Check the last five cards
+    for value in card_values[8:]:
+        if value != 1:
+            return False
 
     return True
 
@@ -324,8 +331,8 @@ def get_player_score(breakdown_cards):
         Royal Flush: 10
 
     :param breakdown_cards:
-    :return: corresponding score, corresponding card value of each group if there is a pair, two pairs, 
-    three of a kind etc., and a single high card
+    :return: corresponding score, corresponding card value of each group if there is a pair,
+    two pairs, three of a kind etc., and a single high card
     """
     single_high_card = get_high_single_card(breakdown_cards)
     group_card_value = -1
@@ -384,8 +391,8 @@ def does_player1_win(dealt_hand):
     if player1_score[0] < player2_score[0]:
         return False
 
-    # Two players has the same rank (same type of group), they are just probably differed in the 
-    # high cards in the pairs
+    # Two players has the same rank (same type of group), they are just probably differed
+    # in the high cards in the pairs
     # Player 1 has higher high card, and wins
     if player1_score[1] > player2_score[1]:
         return True
@@ -395,12 +402,8 @@ def does_player1_win(dealt_hand):
 
     # Last option, use the single high card to decide who wins because all previous conditions
     # do not match, or they simply ends up a tie
-    # Player 1 wins
-    if player1_score[2] > player2_score[2]:
-        return True
-    # Player2 wins or there is a tie
-    else:
-        return False
+    # Return True if Player 1 wins, False otherwise
+    return player1_score[2] > player2_score[2]
 
 
 def calculate_number_of_wins_for_player1(dealt_hands):
@@ -420,6 +423,9 @@ def calculate_number_of_wins_for_player1(dealt_hands):
 
 
 def main():
+    """
+    Test
+    """
     start_time = time.time()
     deals = read_data_from_file("project_euler_54.txt")
     result = calculate_number_of_wins_for_player1(deals)
