@@ -2,65 +2,27 @@
 """
     Project Euler 32: Pandigital products
 
-    We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once;
+    We shall say that an n-digit number is pandigital if it makes use of all the digits
+    1 to n exactly once;
     for example, the 5-digit number, 15234, is 1 through 5 pandigital.
 
     The product 7254 is unusual, as the identity, 39 × 186 = 7254,
     containing multiplicand, multiplier, and product is 1 through 9 pandigital.
 
-    Find the sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9
-    pandigital.
+    Find the sum of all products whose multiplicand/multiplier/product identity can be
+    written as a 1 through 9 pandigital.
 
-    HINT: Some products can be obtained in more than one way so be sure to only include it once in your sum.
+    HINT: Some products can be obtained in more than one way so be sure to only include
+    it once in your sum.
 """
 import time
-
-
-def is_pandigital(multiplicand, multiplier, product):
-    """
-    Check if three numbers forms a 1 through 9 pandigital
-
-    :param multiplicand:
-    :param multiplier:
-    :param product:
-    :return: True if those three inputs from a 1 through 9 pandigital, False otherwise
-    """
-
-    # Position i in this 'list' representing the numbers of digit 'i' in the three numbers above
-    # For example, if the multiplicand has one digit 1, while multiplier and product numbers does not have digit 1
-    # then list[1] = 1
-    digit_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-    # Break numbers into digits, and update the corresponding position in 'list' with that number
-    for i in str(multiplicand):
-        digit_list[int(i)] += 1
-
-    for i in str(multiplier):
-        digit_list[int(i)] += 1
-
-    for i in str(product):
-        digit_list[int(i)] += 1
-
-    pandigital = True
-
-    # If there is a digit 0, then it is not pandigital
-    if digit_list[0] > 0:
-        pandigital = False
-
-    # Checking if the three numbers form a 1 through 9 pandigital
-    # This means each number from 1 to 9 only appears once
-    for i in range(1, len(digit_list)):
-        if digit_list[i] != 1:
-            pandigital = False
-            break
-
-    return pandigital
+import project_euler
 
 
 def find_list_of_product():
     """
-    Find the list of all product values, where their multiplicand/multiplier/ and the values themselves can be
-    written as a 1 through 9 pandigital
+    Find the list of all product values, where their multiplicand/multiplier/ and the
+    values themselves can be written as a 1 through 9 pandigital
 
     :return: List of products
 
@@ -81,7 +43,7 @@ def find_list_of_product():
         # Loop through multiplier range
         for multiplier in range(multiplier_start, multiplier_end):
             product = multiplicand * multiplier
-            if is_pandigital(multiplicand, multiplier, product):
+            if project_euler.is_9_digit_pandigital(multiplicand, multiplier, product):
                 print("{0} {1} {2}".format(multiplicand, multiplier, product))
                 if product not in product_list:
                     product_list.append(product)
