@@ -8,38 +8,8 @@
 
     How many circular primes are there below one million?
 """
-import math
 import time
-
-
-def is_prime(number):
-    """
-    Check if a number is a prime
-
-    :param number: input number
-    :return: return True if the number is prime, and False otherwise
-    """
-    for i in range(2, int(math.sqrt(number)) + 1):
-        if number % i == 0:
-            return False
-
-    return True
-
-
-def is_circular_prime(number):
-    """
-    Check if a number is a circular prime
-
-    :param number: input number
-    :return: True if the number is a circular prime, False otherwise
-    """
-    number_string = str(number)
-
-    for i in range(len(number_string)):
-        if not is_prime(int(number_string[i + 1:] + number_string[:i + 1])):
-            return False
-
-    return True
+import project_euler
 
 
 def find_prime_numbers(limit):
@@ -52,13 +22,12 @@ def find_prime_numbers(limit):
     prime_list = []
 
     for i in range(2, limit):
-        if is_prime(i):
+        if project_euler.is_prime(i):
             prime_list.append(i)
 
     return prime_list
 
 
-# This approach is similar to that in Project Euler 27
 def find_prime_numbers_with_sieving(limit):
     """
     Find all prime numbers less than a limit using sieving
@@ -91,7 +60,7 @@ def find_circular_primes(limit):
     """
     prime_list = find_prime_numbers(limit)
 
-    circular_prime_list = [i for i in prime_list if is_circular_prime(i)]
+    circular_prime_list = [i for i in prime_list if project_euler.is_circular_prime(i)]
 
     return len(circular_prime_list)
 
@@ -105,12 +74,15 @@ def find_circular_primes_with_sieving(limit):
     """
     prime_list = find_prime_numbers_with_sieving(limit)
 
-    circular_prime_list = [i for i in prime_list if is_circular_prime(i)]
+    circular_prime_list = [i for i in prime_list if project_euler.is_circular_prime(i)]
 
     return len(circular_prime_list)
 
 
 def main():
+    """
+    Test method
+    """
     input_number = 1000000
 
     # Test sieving method

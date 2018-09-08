@@ -45,6 +45,22 @@ def is_prime(number):
     return True
 
 
+def is_circular_prime(number):
+    """
+    Check if a number is a circular prime
+
+    :param number: input number
+    :return: True if the number is a circular prime, False otherwise
+    """
+    number_string = str(number)
+
+    for i in range(len(number_string)):
+        if not is_prime(int(number_string[i + 1:] + number_string[:i + 1])):
+            return False
+
+    return True
+
+
 def is_palindrome_base_10(number):
     """
     Check if a number is a palindrome in base 10
