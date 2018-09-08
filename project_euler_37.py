@@ -9,29 +9,10 @@
 
     NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 """
-import math
 import time
+import project_euler
 
 
-def is_prime(number):
-    """
-    Check if a number is a prime
-
-    :param number: input number
-    :return: return True if the number is prime, and False otherwise
-    """
-    # 1 is not a prime
-    if number == 1:
-        return False
-
-    for i in range(2, int(math.sqrt(number)) + 1):
-        if number % i == 0:
-            return False
-
-    return True
-
-
-# This approach is similar to that in Project Euler 27 and 35
 def find_prime_numbers_with_sieving(limit):
     """
     Find all prime numbers less than a limit using sieving, except 2, 3, 5, 7
@@ -66,10 +47,10 @@ def is_truncatable_prime(number):
 
     for i in range(1, len(str(number))):
         # Check if the number is NOT right truncatable
-        if not is_prime(int(str(number)[:i])):
+        if not project_euler.is_prime(int(str(number)[:i])):
             return False
         # Check if the number is NOT left truncatable
-        if not is_prime(int(str(number)[-i:])):
+        if not project_euler.is_prime(int(str(number)[-i:])):
             return False
 
     # The number is truncatable
@@ -105,6 +86,9 @@ def sum_truncatable_primes():
 
 
 def main():
+    """
+    Test function
+    """
     start_time = time.time()
     result = sum_truncatable_primes()
     print("Result is {0}, found in {1} seconds".format(result, time.time() - start_time))
