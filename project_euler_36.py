@@ -8,36 +8,7 @@
     (Please note that the palindromic number, in either base, may not include leading zeros.)
 """
 import time
-
-
-def is_palindrome_base_10(number):
-    """
-    Check if a number is a palindrome in base 10
-
-    :param number: input number
-    :return: True if the number is a palindrome, and False otherwise
-    """
-    if str(number) == str(number)[::-1]:
-        return True
-
-    return False
-
-
-def is_palindrome_base_2(number):
-    """
-    Check if a number in base 10 is a palindrome in base 2
-
-    :param number: input number in base 10
-    :return: True if the number is a palindrome in base 2, and False otherwise
-    """
-    # Convert to binary, and remove the '0b' prefix
-    binary_representation = bin(number)[2:]
-
-    if binary_representation == binary_representation[::-1]:
-        return True
-
-    return False
-
+import project_euler
 
 def find_sum(limit):
     """
@@ -49,13 +20,16 @@ def find_sum(limit):
     the_sum = 0
 
     for i in range(limit):
-        if is_palindrome_base_10(i) and is_palindrome_base_2(i):
+        if project_euler.is_palindrome_base_10(i) and project_euler.is_palindrome_base_2(i):
             the_sum += i
 
     return the_sum
 
 
 def main():
+    """
+    Test method
+    """
     input_numer = 1000000
 
     start_time = time.time()
