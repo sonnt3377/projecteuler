@@ -4,25 +4,31 @@
 import math
 
 
-def sieve(number):
+def sieve(upper_limit, lower_limit=0):
     """
-    Finding a list of primes less than a number using sieving
+    Generating a list of prime numbers between the two bounds using sieving.
+    If the lower limit is omitted, then the method generate list of primes less than
+    the upper bound
 
-    :param number: the upper bound number, that all primes need to be less than or equal
-    :return: list containing all primes less than the limit
+    :param lower_limit:
+    :param upper_limit:
+    :return: the prime list
     """
-    # A boolean list, each index indicates a corresponding number, the value in that index is True if that number is prime, and False otherwise
-    primes = [True] * number
+    # A boolean list, each index indicates a corresponding number, the value in that
+    # index is True if that number is prime, and False otherwise
+    primes = [True] * upper_limit
 
     # 0 and 1 are not primes
     primes[0], primes[1] = [False] * 2
 
     for index, value in enumerate(primes):
         # The first number with True is a prime, but the multiples of it are not
-        if value is True:
-            primes[index * 2::index] = [False] * (((number - 1) // index) - 1)
+        if value:
+            primes[index * 2::index] = [False] * (((upper_limit - 1) // index) - 1)
 
-    prime_list = [i for i in range(number) if primes[i]]
+    # The "primes" list above contains all numbers from 0 to upper_limit
+    # We only need primes from lower_limit to upper_limit
+    prime_list = [i for i in range(lower_limit, upper_limit) if primes[i]]
 
     return prime_list
 
@@ -111,15 +117,27 @@ def is_9_digit_pandigital(*numbers):
     return all(digit in test_string for digit in digit_list)
 
 
-def is_pandigital(n):
+def is_pandigital(number):
     """
     Check if the number is a pandigital
 
-    :param n: input number
+    :param number: input number
     :return: True if the number is a pandigital, and False otherwise
     """
-    test_string = str(n)
+    test_string = str(number)
     digit_list = [str(i) for i in range(1, len(test_string) + 1)]
 
     # The string is pandigital if each digit appears only once
     return all(digit in test_string for digit in digit_list)
+
+
+def is_pentagonal(number):
+    """
+    Check if an integer is a pentagon
+    Ref: https://en.wikipedia.org/wiki/Pentagonal_number#Tests_for_pentagonal_numbers
+
+    :param n: number to check
+    :return: True if the number is pentagonal, False otherwise.
+    """
+    test = (math.sqrt(24 * number + 1) + 1) / 6
+    return test == int(test)
