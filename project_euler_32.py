@@ -41,20 +41,20 @@ def is_pandigital(multiplicand, multiplier, product):
     for i in str(product):
         digit_list[int(i)] += 1
 
-    is_pandigital = True
+    pandigital = True
 
     # If there is a digit 0, then it is not pandigital
     if digit_list[0] > 0:
-        is_pandigital = False
+        pandigital = False
 
     # Checking if the three numbers form a 1 through 9 pandigital
     # This means each number from 1 to 9 only appears once
     for i in range(1, len(digit_list)):
         if digit_list[i] != 1:
-            is_pandigital = False
+            pandigital = False
             break
 
-    return is_pandigital
+    return pandigital
 
 
 def find_list_of_product():
@@ -90,6 +90,9 @@ def find_list_of_product():
 
 
 def main():
+    """
+    Test function
+    """
     start_time = time.time()
     result_list = find_list_of_product()
     result = 0

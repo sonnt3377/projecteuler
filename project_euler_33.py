@@ -22,8 +22,8 @@ def order_number(number1, number2):
     """
     if number2 > number1:
         return number2, number1
-    else:
-        return number1, number2
+
+    return number1, number2
 
 
 def gcd(number1, number2):
@@ -37,8 +37,8 @@ def gcd(number1, number2):
 
     if small_number == 0:
         return large_number
-    else:
-        return gcd(small_number, large_number % small_number)
+
+    return gcd(small_number, large_number % small_number)
 
 
 def do_work():
@@ -79,6 +79,9 @@ def do_work():
 
 
 def main():
+    """
+    Test function
+    """
     start_time = time.time()
     result = do_work()
     print("Result is {0} found in {1}".format(result, time.time() - start_time))

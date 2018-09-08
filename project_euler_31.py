@@ -11,7 +11,6 @@
     1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
     How many different ways can £2 be made using any number of coins?
 """
-
 import time
 
 
@@ -46,9 +45,9 @@ def calculate_with_dp(target_number):
     # penny.
     # Not all numbers in ways[] get this updated though, it depends on the combinations.
     # And so on for other i in coins list.
-    for i in range(len(coins)):
-        for j in range(coins[i], target_number + 1):
-            ways[j] += ways[j - coins[i]]
+    for coin in coins:
+        for j in range(coin, target_number + 1):
+            ways[j] += ways[j - coin]
 
     return ways
 
@@ -68,23 +67,31 @@ def calculate_with_brute_force(target_number):
                 for d in range(c, -1, -20):
                     for e in range(d, -1, -10):
                         for f in range(e, -1, -5):
-                            for g in range(f, -1, -2):
+                            for _ in range(f, -1, -2):
                                 ways += 1
 
     return ways
 
 
-# £2 (200p), bigger numbers will show larger difference between the two algorithms.
-number = 200
+def main():
+    """
+    Test function
+    """
+    # £2 (200p), bigger numbers will show larger difference between the two algorithms.
+    number = 200
 
-start_time = time.clock()
-result_dp = calculate_with_dp(number)
-result = result_dp[len(result_dp) - 1]
-dp_time = time.clock() - start_time
+    start_time = time.clock()
+    result_dp = calculate_with_dp(number)
+    result = result_dp[len(result_dp) - 1]
+    dp_time = time.clock() - start_time
 
-start_time = time.clock()
-result_brute_force = calculate_with_brute_force(number)
-brute_force_time = time.clock() - start_time
+    start_time = time.clock()
+    result_brute_force = calculate_with_brute_force(number)
+    brute_force_time = time.clock() - start_time
 
-print("Result is {0} found in {1} with dynamic programming".format(result, dp_time))
-print("Result is {0} found in {1} with brute force".format(result_brute_force, brute_force_time))
+    print("Result is {0} found in {1} with dynamic programming".format(result, dp_time))
+    print("Result is {0} found in {1} with brute force".format(result_brute_force, brute_force_time))
+
+
+if __name__ == '__main__':
+    main()

@@ -42,12 +42,12 @@ def total_sum(threshold):
     :param threshold:
     :return:
     """
-    total_sum = 0
+    the_sum = 0
     for i in range(2, threshold):
         if i == calculate_fifth_power_sum(i):
-            total_sum += i
+            the_sum += i
 
-    return total_sum
+    return the_sum
 
 
 def main():
